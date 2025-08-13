@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Spam SMS Detector</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+            padding: 40px;
+            min-height: 100vh;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            width: 400px;
+            margin: auto;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        input[type=text] {
+            padding: 12px;
+            width: 90%;
+            border: none;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-size: 16px;
+            outline: none;
+            transition: 0.3s;
+        }
+        input[type=text]:focus {
+            box-shadow: 0 0 10px #00ffea;
+        }
+        input[type=submit] {
+            padding: 12px 20px;
+            font-size: 16px;
+            background-color: #00ffea;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        input[type=submit]:hover {
+            background-color: #00bfa5;
+            transform: scale(1.05);
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 18px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .spam {
+            background-color: rgba(255, 0, 0, 0.2);
+            border: 2px solid red;
+        }
+        .ham {
+            background-color: rgba(0, 255, 0, 0.2);
+            border: 2px solid lime;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📩 Spam SMS Detector</h1>
+        <form action="/predict" method="post">
+            <input type="text" name="message" placeholder="Enter SMS text here" required>
+            <br>
+            <input type="submit" value="Check">
+        </form>
+        {% if prediction_text %}
+            <div class="result {% if 'Spam' in prediction_text %}spam{% else %}ham{% endif %}">
+                {{ prediction_text }}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
