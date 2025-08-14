@@ -17,7 +17,7 @@ The app uses Natural Language Processing (NLP) techniques and a trained ML model
 ## 📸 Screenshots
 
 ### 🔹 Home Page
-![Home Page Screenshot](static/images/homepage.png)
+![Home Page Screenshot]([static/images/homepage.png](https://github.com/abdalmuhammad/spam-SMS-Detection/blob/6d421807eea15ade4ee9167ac7360143b45dd8ae/Image.jpg))
 
 ## 🛠 Installation & Setup
 
